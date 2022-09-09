@@ -6,6 +6,8 @@ ARG uid
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
+    vim \
+    build-essential \
     git \
     curl \
     libpng-dev \
@@ -22,6 +24,10 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Install Node
+RUN curl -sL https://deb.nodesource.com/setup_12.x| bash -
+RUN apt-get install -y nodejs
 
 # Create system user to run Composer and Artisan Commands
 RUN useradd -G www-data,root -u $uid -d /home/$user $user

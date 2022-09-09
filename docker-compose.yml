@@ -46,6 +46,15 @@ services:
     networks:
       - testing
 
+  node:
+    image: node:alpine
+    container_name: testing-node
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+    networks:
+      - testing
+      
 networks:
   testing:
     driver: bridge
