@@ -1,5 +1,5 @@
-## docker-base-setup
-php7-nginx-mysql
+## docker-laravel-base-setup
+php7-nginx-mysql-nodejs
 
 ### build the image
 sudo docker-compose build app
